@@ -77,7 +77,10 @@ open class KSTokenField: UITextField {
    }
    
    // MARK: - Public Properties
-   
+
+   open var customTokenFont: UIFont?
+
+
    /// default is grayColor()
    var promptTextColor: UIColor = UIColor.gray
    
@@ -546,7 +549,7 @@ open class KSTokenField: UITextField {
             leftViewMode = .always
          }
          (label as! UILabel).text = text
-         (label as! UILabel).font = font
+         (label as! UILabel).font = _font
          (label as! UILabel).textColor = promptTextColor
          (label as! UILabel).sizeToFit()
          leftView = label
@@ -683,9 +686,14 @@ open class KSTokenField: UITextField {
    }
    
    func tokenFont() -> UIFont? {
-      return _font
+        if customTokenFont != nil {
+            return customTokenFont
+        } else {
+            return _font
+        }
+
    }
-   
+
    func objects() -> NSArray {
       let objects = NSMutableArray()
       for object: AnyObject in tokens {

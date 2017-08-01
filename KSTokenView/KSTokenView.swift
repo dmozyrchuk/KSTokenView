@@ -95,7 +95,6 @@ open class KSTokenView: UIView {
    //MARK: - Private Properties
    //__________________________________________________________________________________
    //
-   fileprivate var _tokenField: KSTokenField!
    fileprivate var _searchTableView: UITableView = UITableView(frame: .zero, style: UITableViewStyle.plain)
    fileprivate var _resultArray = [AnyObject]()
    fileprivate var _showingSearchResult = false
@@ -107,6 +106,8 @@ open class KSTokenView: UIView {
    //MARK: - Public Properties
    //__________________________________________________________________________________
    //
+   /// returns the tokenField
+   open var _tokenField: KSTokenField!
    
    /// returns the value of field
    open var text : String {
