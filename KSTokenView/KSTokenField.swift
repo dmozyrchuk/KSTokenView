@@ -80,6 +80,8 @@ open class KSTokenField: UITextField {
 
    open var customTokenFont: UIFont?
 
+   open var customTokenTextColor: UIColor?
+
 
    /// default is grayColor()
    var promptTextColor: UIColor = UIColor.gray
@@ -125,6 +127,7 @@ open class KSTokenField: UITextField {
             placeHolderColor = tokenView!.placeholderColor
             promptTextColor = tokenView!.promptColor
             _setPromptText(tokenView!.promptText)
+            self.textColor = customTokenTextColor
             
             if (_setupCompleted) {
                updateLayout()

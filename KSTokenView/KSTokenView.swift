@@ -108,6 +108,8 @@ open class KSTokenView: UIView {
    //
    /// returns the tokenField
    open var _tokenField: KSTokenField!
+
+   open var tableSeparatorColor: UIColor?
    
    /// returns the value of field
    open var text : String {
@@ -405,7 +407,7 @@ open class KSTokenView: UIView {
       _searchTableView.frame = CGRect(x: 0, y: frame.height, width: frame.width, height: _searchResultHeight)
       _searchTableView.delegate = self
       _searchTableView.dataSource = self
-      
+      _searchTableView.separatorColor = tableSeparatorColor
       _hideSearchResults()
       _intrinsicContentHeight = _tokenField.bounds.height
       invalidateIntrinsicContentSize()
@@ -947,6 +949,9 @@ extension KSTokenView : UITableViewDataSource {
       
       var cell: UITableViewCell? = delegate?.tokenView?(self, withObject: _resultArray[(indexPath as NSIndexPath).row], tableView: tableView, cellForRowAtIndexPath: indexPath)
       if cell != nil {
+        cell?.backgroundColor = searchResultBackgroundColor
+        cell?.contentView.backgroundColor = searchResultBackgroundColor
+        cell?.textLabel?.textColor = UIColor.lightGray
          return cell!
       }
       
@@ -955,7 +960,9 @@ extension KSTokenView : UITableViewDataSource {
       if (cell == nil) {
          cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: cellIdentifier)
       }
-      
+      cell?.backgroundColor = searchResultBackgroundColor
+      cell?.contentView.backgroundColor = searchResultBackgroundColor
+    cell?.textLabel?.textColor = UIColor.lightGray
       let title = delegate?.tokenView(self, displayTitleForObject: _resultArray[(indexPath as NSIndexPath).row])
       cell!.textLabel!.text = (title != nil) ? title : "No Title"
       cell!.selectionStyle = UITableViewCellSelectionStyle.none
