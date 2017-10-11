@@ -28,6 +28,7 @@ import UIKit
 @objc public enum KSTokenViewStyle: Int {
     case rounded
     case squared
+    case none
 }
 
 @objc public enum KSTokenViewScrollDirection: Int {
@@ -455,6 +456,11 @@ open class KSTokenView: UIView {
             _tokenField.borderStyle = .bezel
             backgroundColor = _tokenField.backgroundColor
         }
+
+        case .none:
+        _tokenField.borderStyle = .none
+        backgroundColor = UIColor.clear
+    }
     }
 
     fileprivate func _lastToken() -> KSToken? {
