@@ -455,12 +455,11 @@ open class KSTokenView: UIView {
         case .squared:
             _tokenField.borderStyle = .bezel
             backgroundColor = _tokenField.backgroundColor
-        }
 
         case .none:
-        _tokenField.borderStyle = .none
-        backgroundColor = UIColor.clear
-    }
+            _tokenField.borderStyle = .none
+            backgroundColor = UIColor.clear
+        }
     }
 
     fileprivate func _lastToken() -> KSToken? {
